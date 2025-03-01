@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import plotly.express as px 
 import requests
 import random  
 
@@ -48,9 +48,9 @@ sehri_time, iftar_time = fetch_sehri_iftar()
 # ✅ Sidebar Customization
 sidebar_images = [
     "https://images.unsplash.com/photo-1576764402988-7143f9cca90a?q=80&w=1480&auto=format&fit=crop",
-    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fislamicrelief.org.au%2Ftaraweeh-prayers-in-ramadan-how-and-why-muslims-pray-it%2F&psig=AOvVaw0LLQixbaV6pCkpVEPie1Vu&ust=1740924451005000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDji46H6YsDFQAAAAAdAAAAABAE",
+    "https://plus.unsplash.com/premium_photo-1723532605982-5b2cc9d9b28d?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://arynews.tv/wp-content/uploads/2017/05/Ramazan_Crescent.jpg",
-    "https://source.unsplash.com/300x200/?fasting,dates"
+    "https://plus.unsplash.com/premium_photo-1672753749524-7553762bfb0e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGF0ZXN8ZW58MHx8MHx8fDA%3D"
 ]
 st.sidebar.image(random.choice(sidebar_images), use_container_width=True)
 st.sidebar.header("📊 Customize Your Graph")
