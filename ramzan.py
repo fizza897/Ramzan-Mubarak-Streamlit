@@ -133,9 +133,7 @@ zakat_images = [
 st.markdown("<h2 style='color: black;'>💰 Zakat Calculator</h2>", unsafe_allow_html=True)
 st.image(random.choice(zakat_images), use_container_width=True)
 
-st.markdown("<p style='color:black; font-weight:bold;'>Enter Your Savings (PKR)</p>", unsafe_allow_html=True)
-amount = st.number_input("", min_value=0)
-
+amount = st.number_input("Enter Your Savings (PKR)", min_value=0)
 if st.button("Calculate Zakat"):
     zakat = amount * 0.025
     st.success(f"Your Zakat Payable: PKR {zakat:.2f}")
