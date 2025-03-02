@@ -64,8 +64,8 @@ banner_images = [
     "https://images.unsplash.com/photo-1740330794911-fb4479e06ad0?q=80&w=1574&auto=format&fit=crop"
 ]
 st.image(random.choice(banner_images), use_container_width=True)
-st.title("🌙 Ramzan Insights: Zakat, Taraweeh & Fast Duration")
-st.markdown(f"**🕌 Karachi Sehri Time:** {sehri_time} | **🍽️ Iftar Time:** {iftar_time}")
+st.markdown("<h1 style='color:black;'>🌙 Ramzan Insights: Zakat, Taraweeh & Fast Duration</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='color:black;'>🕌 Karachi Sehri Time: {sehri_time} | 🍽️ Iftar Time: {iftar_time}</h1>", unsafe_allow_html=True)
 
 # ✅ Function to Generate Graphs
 def visualize(graph):
@@ -76,9 +76,9 @@ def visualize(graph):
         return px.scatter(data, x=x_label, y=y_label, color=color_label if color_label in data.columns else None, title=f"{y_label} vs {x_label}")
 
     elif graph == "HeatMap":
-        if color_label in data.columns:
-            return px.density_heatmap(data, x=x_label, y=y_label, z=color_label, title=f"HeatMap of {y_label} vs {x_label}")
-        else:
+        return px.density_heatmap(data, x=x_label, y=y_label, z=color_label if color_label in data.columns else None,
+                              title=f"HeatMap of {y_label} vs {x_label}")
+    elif graph== "Pie":
             return px.density_heatmap(data, x=x_label, y=y_label, color_continuous_scale="Viridis", title=f"HeatMap of {y_label} vs {x_label}")
 
     elif graph == "Pie":
@@ -97,7 +97,7 @@ def visualize(graph):
 st.plotly_chart(visualize(graph_type))
 
 # ✅ Ramzan Reports Section
-st.markdown("## **📜 Ramzan Reports**")
+st.markdown("<h2 style='color:black;'>📜 Ramzan Reports</h2>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 report_images = {
@@ -130,12 +130,14 @@ zakat_images = [
     "https://images.unsplash.com/photo-1657972590667-5d94b96ec583?q=80&w=1331&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1552481298-205046c383cf?q=80&w=1470&auto=format&fit=crop"
 ]
-st.markdown("## **💰 Zakat Calculator**")
+st.markdown("<h2 style='color: black;'>💰 Zakat Calculator</h2>", unsafe_allow_html=True)
 st.image(random.choice(zakat_images), use_container_width=True)
 
-amount = st.number_input("Enter Your Savings (PKR)", min_value=0)
+st.markdown("<p style='color:black; font-weight:bold;'>Enter Your Savings (PKR)</p>", unsafe_allow_html=True)
+amount = st.number_input("", min_value=0)
+
 if st.button("Calculate Zakat"):
     zakat = amount * 0.025
     st.success(f"Your Zakat Payable: PKR {zakat:.2f}")
+st.markdown("<p style='color: black; font-size:16px;'>💡 <b>Tip:</b> Customize your graphs using the sidebar & explore different reports!</p>", unsafe_allow_html=True)
 
-st.markdown("💡 **Tip:** Customize your graphs using the sidebar & explore different reports!")
