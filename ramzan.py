@@ -8,21 +8,7 @@ import random
 st.set_page_config(page_title="🌙 Ramzan Insights", layout="wide")
 
 # ✅ Random Background Image
-bg_images = [
-    "https://media.istockphoto.com/id/1881660531/photo/islamic-background-silhouette-mosques-dome-crescent-moon-on-dusk-sky-twilight-landscape.jpg?s=1024x1024&w=is&k=20&c=QWZsBNHmq7__BpqNLm0DKmNHn7Vvx8LSrosUxIzpldw=",
-    "https://plus.unsplash.com/premium_photo-1723662241766-1e9f0c3e72f5?q=80&w=1438&auto=format&fit=crop",
-    "https://plus.unsplash.com/premium_photo-1677587536653-0d02efbb70ee?q=80&w=1470&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1537181534458-45dcee76ae90?q=80&w=1527&auto=format&fit=crop"
-]
-st.markdown(f'''
-    <style>
-        [data-testid="stAppViewContainer"] {{
-            background-image: url("{random.choice(bg_images)}");
-            background-size: cover;
-            background-position: center;
-        }}
-    </style>
-''', unsafe_allow_html=True)
+
 
 # ✅ Sehri/Iftar API Fetch Function
 def fetch_sehri_iftar(city="Karachi"):
@@ -64,8 +50,8 @@ banner_images = [
     "https://images.unsplash.com/photo-1740330794911-fb4479e06ad0?q=80&w=1574&auto=format&fit=crop"
 ]
 st.image(random.choice(banner_images), use_container_width=True)
-st.markdown("<h1 style='color:black;'>🌙 Ramzan Insights: Zakat, Taraweeh & Fast Duration</h1>", unsafe_allow_html=True)
-st.markdown(f"<h1 style='color:black;'>🕌 Karachi Sehri Time: {sehri_time} | 🍽️ Iftar Time: {iftar_time}</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:white;'>🌙 Ramzan Insights: Zakat, Taraweeh & Fast Duration</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='color:white;'>🕌 Karachi Sehri Time: {sehri_time} | 🍽️ Iftar Time: {iftar_time}</h1>", unsafe_allow_html=True)
 
 # ✅ Function to Generate Graphs
 def visualize(graph):
@@ -80,10 +66,6 @@ def visualize(graph):
                               title=f"HeatMap of {y_label} vs {x_label}")
     elif graph== "Pie":
             return px.density_heatmap(data, x=x_label, y=y_label, color_continuous_scale="Viridis", title=f"HeatMap of {y_label} vs {x_label}")
-
-    elif graph == "Pie":
-        return px.pie(data, names=x_label, values=y_label, title=f"{y_label} Distribution")
-
     elif graph == "Line":
         return px.line(data, x=x_label, y=y_label, color=color_label if color_label in data.columns else None, title=f"{y_label} vs {x_label}")
 
@@ -97,7 +79,7 @@ def visualize(graph):
 st.plotly_chart(visualize(graph_type))
 
 # ✅ Ramzan Reports Section
-st.markdown("<h2 style='color:black;'>📜 Ramzan Reports</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='color:white;'>📜 Ramzan Reports</h2>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 report_images = {
@@ -130,12 +112,12 @@ zakat_images = [
     "https://images.unsplash.com/photo-1657972590667-5d94b96ec583?q=80&w=1331&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1552481298-205046c383cf?q=80&w=1470&auto=format&fit=crop"
 ]
-st.markdown("<h2 style='color: black;'>💰 Zakat Calculator</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: white;'>💰 Zakat Calculator</h2>", unsafe_allow_html=True)
 st.image(random.choice(zakat_images), use_container_width=True)
 
 amount = st.number_input("Enter Your Savings (PKR)", min_value=0)
 if st.button("Calculate Zakat"):
     zakat = amount * 0.025
     st.success(f"Your Zakat Payable: PKR {zakat:.2f}")
-st.markdown("<p style='color: black; font-size:16px;'>💡 <b>Tip:</b> Customize your graphs using the sidebar & explore different reports!</p>", unsafe_allow_html=True)
+st.markdown("<p style='color: white; font-size:16px;'>💡 <b>Tip:</b> Customize your graphs using the sidebar & explore different reports!</p>", unsafe_allow_html=True)
 
